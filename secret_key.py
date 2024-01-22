@@ -1,0 +1,1 @@
+firebaseKey = 'hero-battles-firebase-adminsdk-rlyha-621a231c87.json'
