@@ -1,5 +1,5 @@
-import firebase
-import consoleFunctions
+import firebase.firebase as firebase
+import utilities.consoleFunctions as consoleFunctions
 import random
 from colorama import Fore, Style
 

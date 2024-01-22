@@ -1,4 +1,4 @@
-import firebase
+import firebase.firebase as firebase
 
 playerData = {
     'UID': 'UID', # use to connect player accounts to a registered user.

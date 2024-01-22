@@ -1,16 +1,16 @@
-import consoleFunctions
-import firebase
-import heroFunctions
-import battleFunctions
-import playerFunctions
+import utilities.consoleFunctions as consoleFunctions
+import firebase.firebase as firebase
+import functions.heroFunctions as heroFunctions
+import functions.battleFunctions as battleFunctions
+import functions.playerFunctions as playerFunctions
 import json
 from colorama import Fore, Style
 
 # Sample Data
 dataset = 'baseData' # heroes, baseData
 datasetB = 'roleData' # roleData, raceData, classData
-csvFile = 'csv/heroRole.csv' # heroes.csv, heroRace.csv, heroClass.csv, heroRole.csv 
-jsonFile = 'json/heroRole,json' # heroes,json, heroRace,json, heroClass,json, heroRole,json 
+csvFile = 'file/csv/heroRole.csv' # heroes.csv, heroRace.csv, heroClass.csv, heroRole.csv 
+jsonFile = 'file/json/heroRole,json' # heroes,json, heroRace,json, heroClass,json, heroRole,json 
 recordID = 'heroBaseData' # heroBaseData 
 heroID = ''
 

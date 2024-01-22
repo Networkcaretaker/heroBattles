@@ -1,6 +1,6 @@
-import consoleFunctions
-import battleFunctions
-import heroFunctions
+import utilities.consoleFunctions as consoleFunctions
+import functions.battleFunctions as battleFunctions
+import functions.heroFunctions as heroFunctions
 from colorama import Fore, Style
 
 def Main_Menu():

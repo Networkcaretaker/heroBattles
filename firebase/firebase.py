@@ -1,5 +1,5 @@
 import firebase_admin
-import secret_key
+import firebase.secret_key as secret_key
 import json
 import csv
 from firebase_admin import credentials, firestore

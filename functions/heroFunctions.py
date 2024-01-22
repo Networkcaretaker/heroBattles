@@ -1,6 +1,6 @@
-import consoleFunctions
+import utilities.consoleFunctions as consoleFunctions
 import json
-import firebase
+import firebase.firebase as firebase
 import click
 from colorama import Fore, Style
 
@@ -223,17 +223,17 @@ def createNewHeroesFromInput():
         "Class": Class,
         "Role": Role
         }
-        firebase.updateJsonFile('json/heroes,json', newHero)
+        firebase.updateJsonFile('files/json/heroes,json', newHero)
 
 # Create New Heroes from JSON file
 def createNewHeroesFromFile(fileType):
     if fileType == 'CSV':
-        heroes = firebase.createJsonFromCsv('csv/heroes.csv', 'json/heroes,json')
+        heroes = firebase.createJsonFromCsv('files/csv/heroes.csv', 'files/json/heroes,json')
     if fileType == 'JSON':
-        with open('json/heroes,json', 'r') as file:
+        with open('files/json/heroes,json', 'r') as file:
             # Load the existing JSON content
             heroes = json.load(file)
-            print(f"{Fore.YELLOW}Success: {Fore.GREEN}{'json/heroes,json'}{Style.RESET_ALL} has been loaded.")
+            print(f"{Fore.YELLOW}Success: {Fore.GREEN}{'files/json/heroes,json'}{Style.RESET_ALL} has been loaded.")
     
     heroCount = len(heroes)
     print(f"{heroCount} heroes in file.")
