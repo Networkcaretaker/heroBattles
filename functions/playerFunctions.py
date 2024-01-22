@@ -76,7 +76,7 @@ def createPlayer():
     
     # ADD HERO TO NEW PLAYER
     TEMPdata = {'hero': 'NONE'}
-    firebase.addSubRecord(dataset, TEMPdata, 'heroes', playerID)
+    firebase.addSubRecord(dataset, playerID, 'heroes', TEMPdata,)
 
     print(f'New Player Created. ID: {playerID}\n{playerData}')
     return (playerID, playerData)

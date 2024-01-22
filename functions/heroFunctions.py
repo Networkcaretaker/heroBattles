@@ -1,4 +1,5 @@
 import utilities.consoleFunctions as consoleFunctions
+import utilities.jsonFunctions as jsonFunctions
 import json
 import firebase.firebase as firebase
 import click
@@ -67,17 +68,17 @@ def createNewHero(Name, Race, Class, Role):
 
 # Get stat data for Hero Basic Stats from Firebase
 def getheroBaseData():
-    raceData = firebase.getSubRecords('baseData', 'raceData', 'heroBaseData', 'raceName')
-    classData = firebase.getSubRecords('baseData', 'classData', 'heroBaseData', 'className')
-    roleData = firebase.getSubRecords('baseData', 'roleData', 'heroBaseData', 'roleName')
+    raceData = firebase.getSubRecords('baseData', 'heroBaseData', 'raceData', 'raceName')
+    classData = firebase.getSubRecords('baseData', 'heroBaseData', 'classData', 'className')
+    roleData = firebase.getSubRecords('baseData', 'heroBaseData', 'roleData', 'roleName')
     return(raceData, classData, roleData)
 
 # Set hero stats in Firebase
 def setHeroBasicStats(heroID):
     hero = firebase.getRecord(dataset, heroID)
-    raceData = firebase.getSubRecords('baseData', 'raceData', 'heroBaseData', 'raceName')
-    classData = firebase.getSubRecords('baseData', 'classData', 'heroBaseData', 'className')
-    roleData = firebase.getSubRecords('baseData', 'roleData', 'heroBaseData', 'roleName')
+    raceData = firebase.getSubRecords('baseData', 'heroBaseData', 'raceData', 'raceName')
+    classData = firebase.getSubRecords('baseData', 'heroBaseData', 'classData', 'className')
+    roleData = firebase.getSubRecords('baseData', 'heroBaseData', 'roleData', 'roleName')
     
     heroRace = hero.to_dict()['Race']
     heroClass = hero.to_dict()['Class']
@@ -187,7 +188,7 @@ def createNewHeroesFromInput():
     # Select a Race
     click.echo(f"{Fore.YELLOW}Choose a Race{Style.RESET_ALL}")
     races = []
-    raceData = firebase.getSubRecords('baseData', 'raceData', 'heroBaseData', 'raceName')
+    raceData = firebase.getSubRecords('baseData', 'heroBaseData', 'raceData', 'raceName')
     for raceStat in raceData:
         races.append(raceStat.to_dict()['raceName'])
     Race = consoleFunctions.selectListValue(races)
@@ -195,7 +196,7 @@ def createNewHeroesFromInput():
     # Select a Class
     print(f"{Fore.YELLOW}Choose a Class{Style.RESET_ALL}")
     classes = []
-    classData = firebase.getSubRecords('baseData', 'classData', 'heroBaseData', 'className')
+    classData = firebase.getSubRecords('baseData', 'heroBaseData', 'classData', 'className')
     for classStat in classData:
         classes.append(classStat.to_dict()['className'])
     Class = consoleFunctions.selectListValue(classes)
@@ -203,7 +204,7 @@ def createNewHeroesFromInput():
     # Select a Role
     print(f"{Fore.YELLOW}Choose a Role{Style.RESET_ALL}")
     roles = []
-    roleData = firebase.getSubRecords('baseData', 'roleData', 'heroBaseData', 'roleName')
+    roleData = firebase.getSubRecords('baseData','heroBaseData', 'roleData', 'roleName')
     for roleStat in roleData:
         roles.append(roleStat.to_dict()['roleName'])
     Role = consoleFunctions.selectListValue(roles)
@@ -223,12 +224,12 @@ def createNewHeroesFromInput():
         "Class": Class,
         "Role": Role
         }
-        firebase.updateJsonFile('files/json/heroes,json', newHero)
+        jsonFunctions.updateJsonFile('files/json/heroes,json', newHero)
 
 # Create New Heroes from JSON file
 def createNewHeroesFromFile(fileType):
     if fileType == 'CSV':
-        heroes = firebase.createJsonFromCsv('files/csv/heroes.csv', 'files/json/heroes,json')
+        heroes = jsonFunctions.createJsonFromCsv('files/csv/heroes.csv', 'files/json/heroes,json')
     if fileType == 'JSON':
         with open('files/json/heroes,json', 'r') as file:
             # Load the existing JSON content

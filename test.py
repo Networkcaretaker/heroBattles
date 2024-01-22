@@ -1,4 +1,5 @@
 import utilities.consoleFunctions as consoleFunctions
+import utilities.jsonFunctions as jsonFunctions
 import firebase.firebase as firebase
 import functions.heroFunctions as heroFunctions
 import functions.battleFunctions as battleFunctions
@@ -15,19 +16,19 @@ recordID = 'heroBaseData' # heroBaseData
 heroID = ''
 
 # Create a JSON file from CSV data
-# data = firebase.createJsonFromCsv(csvFile, jsonFile)
+# data = jsonFunctions.createJsonFromCsv(csvFile, jsonFile)
 # print(f"{Fore.YELLOW}Success: {Fore.GREEN}{jsonFile}{Style.RESET_ALL} has been created.")
 
 # Create a JSON file from CSV data and upload to firebase
-# data = firebase.createJsonFromCsv(csvFile, jsonFile)
+# data = jsonFunctions.createJsonFromCsv(csvFile, jsonFile)
 # print(f"{Fore.YELLOW}Success: {Fore.GREEN}{jsonFile}{Style.RESET_ALL} has been created.")
-# results = firebase.jsonToFirebase(data, dataset)
+# results = jsonFunctions.jsonToFirebase(data, dataset)
 # print(results)
 
 # Create a JSON file from CSV data and upload to firebase sub-collection
 def uploadSubCollectionFromFile():
-    data = firebase.createJsonFromCsv(csvFile, jsonFile)
-    results = firebase.jsonToFirebaseSub (data, dataset, recordID, datasetB)
+    data = jsonFunctions.createJsonFromCsv(csvFile, jsonFile)
+    results = jsonFunctions.jsonToFirebaseSub (data, dataset, recordID, datasetB)
     print(f"{results}\n{Fore.YELLOW}Success: {Fore.GREEN}{datasetB}{Style.RESET_ALL} has been added to Firebase.")
 
 # uploadSubCollectionFromFile()
