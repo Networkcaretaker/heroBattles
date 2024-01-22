@@ -1,11 +1,12 @@
 import firebase_admin
+import secret_key
 import json
 import csv
 from firebase_admin import credentials, firestore
 from colorama import Fore, Style
 
 # Initialize firestore
-cred = credentials.Certificate('hero-battles-firebase-adminsdk-rlyha-621a231c87.json')
+cred = credentials.Certificate(secret_key.firebaseKey)
 firebase_admin.initialize_app(cred)
 
 db = firestore.client()
