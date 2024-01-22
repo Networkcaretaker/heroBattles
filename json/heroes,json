@@ -1,0 +1,38 @@
+[
+  {
+    "Name": "Balroc",
+    "Race": "Orc",
+    "Class": "Strength Tank",
+    "Role": "Brawler"
+  },
+  {
+    "Name": "Bane",
+    "Race": "Demon",
+    "Class": "Agility Mage Warrior",
+    "Role": "Brawler"
+  },
+  {
+    "Name": "Xylla",
+    "Race": "Elf",
+    "Class": "Sorcery Control Mage",
+    "Role": "Commander"
+  },
+  {
+    "Name": "Thorn",
+    "Race": "Dwarf",
+    "Class": "Agility Tank",
+    "Role": "Brawler"
+  },
+  {
+    "Name": "Jeffray",
+    "Race": "Machine",
+    "Class": "Intellligence Support",
+    "Role": "Marksman"
+  },
+  {
+    "Name": "Ence",
+    "Race": "Human",
+    "Class": "Agility Warrior",
+    "Role": "Marksman"
+  }
+]
