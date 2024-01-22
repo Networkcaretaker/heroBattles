@@ -1,0 +1,65 @@
+[
+  {
+    "raceName": "Alien",
+    "Strength": "0",
+    "Intelligence": "0",
+    "Agility": "2",
+    "Sorcery": "0"
+  },
+  {
+    "raceName": "Demon",
+    "Strength": "0",
+    "Intelligence": "0",
+    "Agility": "0",
+    "Sorcery": "2"
+  },
+  {
+    "raceName": "Dwarf",
+    "Strength": "1",
+    "Intelligence": "0",
+    "Agility": "0",
+    "Sorcery": "1"
+  },
+  {
+    "raceName": "Elf",
+    "Strength": "0",
+    "Intelligence": "1",
+    "Agility": "0",
+    "Sorcery": "1"
+  },
+  {
+    "raceName": "Human",
+    "Strength": "0",
+    "Intelligence": "1",
+    "Agility": "1",
+    "Sorcery": "0"
+  },
+  {
+    "raceName": "Machine",
+    "Strength": "0",
+    "Intelligence": "2",
+    "Agility": "0",
+    "Sorcery": "0"
+  },
+  {
+    "raceName": "Mystical",
+    "Strength": "0",
+    "Intelligence": "0",
+    "Agility": "0",
+    "Sorcery": "2"
+  },
+  {
+    "raceName": "Orc",
+    "Strength": "2",
+    "Intelligence": "0",
+    "Agility": "0",
+    "Sorcery": "0"
+  },
+  {
+    "raceName": "Undead",
+    "Strength": "0",
+    "Intelligence": "1",
+    "Agility": "0",
+    "Sorcery": "1"
+  }
+]
