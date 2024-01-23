@@ -130,7 +130,7 @@ def battle_round(hero1, hero2):
 
     # battleModifier chance | 0.7 = 5% | 0.8 = 10% | 0.9 = 15% | 1.0 = 40% | 1.1 = 15% | 1.2 = 10% | 1.3 = 5%
     battleModifier = [0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4]
-    battleMOD = random.choices(battleModifier, weight=(3, 6, 11, 58, 11, 7, 3, 1), k=8)
+    battleMOD = random.choices(battleModifier, weights=(3, 6, 11, 58, 11, 7, 3, 1), k=1)
 
     # Hero 1 attacks Hero 2
     print(f"{Fore.LIGHTCYAN_EX}-- PLAYER 1 --------------------------------------------------{Style.RESET_ALL}\n")
@@ -149,7 +149,7 @@ def battle_round(hero1, hero2):
             
             if attackOption == 'Powerful':
                 if hero1.Stamina >= 20:
-                    Hero_1_PATTACK = int((hero1.PhysicalAttack * 1.5) * battleMOD)
+                    Hero_1_PATTACK = int((hero1.PhysicalAttack * 1.5) * battleMOD[0])
                     damage_to_hero2 = max(0, Hero_1_PATTACK - hero2.PhysicalDefence)
                     damage_taken = hero2.take_damage(damage_to_hero2)
                     Damage = f"{Fore.RED}{damage_taken}{Style.RESET_ALL}"
@@ -163,7 +163,7 @@ def battle_round(hero1, hero2):
             if attackOption == 'Ultimate':
                 if hero1.Stamina >= 10:
                     if hero1.Ultimate >= 50:
-                        Hero_1_PATTACK = int((hero1.PhysicalAttack * 3) * battleMOD)
+                        Hero_1_PATTACK = int((hero1.PhysicalAttack * 3) * battleMOD[0])
                         damage_to_hero2 = max(0, Hero_1_PATTACK - hero2.PhysicalDefence)
                         damage_taken = hero2.take_damage(damage_to_hero2)
                         Damage = f"{Fore.RED}{damage_taken}{Style.RESET_ALL}"
@@ -179,7 +179,7 @@ def battle_round(hero1, hero2):
                     attackOption = 'Basic'
 
             if attackOption == 'Basic':
-                Hero_1_PATTACK = int(hero1.PhysicalAttack * battleMOD)
+                Hero_1_PATTACK = int(hero1.PhysicalAttack * battleMOD[0])
                 damage_to_hero2 = max(0, Hero_1_PATTACK - hero2.PhysicalDefence)
                 damage_taken = hero2.take_damage(damage_to_hero2)
                 Damage = f"{Fore.RED}{damage_taken}{Style.RESET_ALL}"
@@ -207,7 +207,7 @@ def battle_round(hero1, hero2):
 
             if attackOption == 'Powerful':
                 if hero1.Magicka >= 20:
-                    Hero_1_MATTACK = int((hero1.MagicAttack * 1.5) * battleMOD)
+                    Hero_1_MATTACK = int((hero1.MagicAttack * 1.5) * battleMOD[0])
                     damage_to_hero2 = max(0, Hero_1_MATTACK - hero2.MagicDefence)
                     damage_taken = hero2.take_damage(damage_to_hero2)
                     Damage = f"{Fore.MAGENTA}{damage_taken}{Style.RESET_ALL}"
@@ -222,7 +222,7 @@ def battle_round(hero1, hero2):
             if attackOption == 'Ultimate':
                 if hero1.Magicka >= 10:
                     if hero1.Ultimate >= 50:
-                        Hero_1_MATTACK = int((hero1.MagicAttack * 3) * battleMOD)
+                        Hero_1_MATTACK = int((hero1.MagicAttack * 3) * battleMOD[0])
                         damage_to_hero2 = max(0, Hero_1_MATTACK - hero2.MagicDefence)
                         damage_taken = hero2.take_damage(damage_to_hero2)
                         Damage = f"{Fore.MAGENTA}{damage_taken}{Style.RESET_ALL}"
@@ -238,7 +238,7 @@ def battle_round(hero1, hero2):
                     attackOption = 'Basic'
                 
             if attackOption == 'Basic':
-                Hero_1_MATTACK = int(hero1.MagicAttack * battleMOD)
+                Hero_1_MATTACK = int(hero1.MagicAttack * battleMOD[0])
                 damage_to_hero2 = max(0, Hero_1_MATTACK - hero2.MagicDefence)
                 damage_taken = hero2.take_damage(damage_to_hero2)
                 Damage = f"{Fore.MAGENTA}{damage_taken}{Style.RESET_ALL}"
@@ -319,7 +319,7 @@ def battle_round(hero1, hero2):
 
             if attackOption == 'Powerful':
                 if hero2.Stamina >= 20:
-                    Hero_2_PATTACK = int((hero2.PhysicalAttack * 1.5) * battleMOD)
+                    Hero_2_PATTACK = int((hero2.PhysicalAttack * 1.5) * battleMOD[0])
                     damage_to_hero1 = max(0, Hero_2_PATTACK - hero1.PhysicalDefence)
                     damage_taken = hero1.take_damage(damage_to_hero1)
                     Damage = f"{Fore.RED}{damage_taken}{Style.RESET_ALL}"
@@ -334,7 +334,7 @@ def battle_round(hero1, hero2):
             if attackOption == 'Ultimate':
                 if hero2.Stamina >= 10:
                     if hero2.Ultimate >= 50:
-                        Hero_2_PATTACK = int((hero2.PhysicalAttack * 3) * battleMOD)
+                        Hero_2_PATTACK = int((hero2.PhysicalAttack * 3) * battleMOD[0])
                         damage_to_hero1 = max(0, Hero_2_PATTACK - hero1.PhysicalDefence)
                         damage_taken = hero1.take_damage(damage_to_hero1)
                         Damage = f"{Fore.RED}{damage_taken}{Style.RESET_ALL}"
@@ -350,7 +350,7 @@ def battle_round(hero1, hero2):
                     attackOption = 'Basic'
 
             if attackOption == 'Basic':
-                Hero_2_PATTACK = int(hero2.PhysicalAttack * battleMOD)
+                Hero_2_PATTACK = int(hero2.PhysicalAttack * battleMOD[0])
                 damage_to_hero1 = max(0, Hero_2_PATTACK - hero1.PhysicalDefence)
                 damage_taken = hero1.take_damage(damage_to_hero1)
                 Damage = f"{Fore.RED}{damage_taken}{Style.RESET_ALL}"
@@ -378,7 +378,7 @@ def battle_round(hero1, hero2):
 
             if attackOption == 'Powerful':
                 if hero2.Magicka >= 20:
-                    Hero_2_MATTACK = int((hero2.MagicAttack * 1.5) * battleMOD)
+                    Hero_2_MATTACK = int((hero2.MagicAttack * 1.5) * battleMOD[0])
                     damage_to_hero1 = max(0, Hero_2_MATTACK - hero1.MagicDefence)
                     damage_taken = hero1.take_damage(damage_to_hero1)
                     Damage = f"{Fore.MAGENTA}{damage_taken}{Style.RESET_ALL}"
@@ -393,7 +393,7 @@ def battle_round(hero1, hero2):
             if attackOption == 'Ultimate':
                 if hero2.Magicka >= 10:
                     if hero2.Ultimate >= 50:
-                        Hero_2_MATTACK = int((hero2.MagicAttack * 3) * battleMOD)
+                        Hero_2_MATTACK = int((hero2.MagicAttack * 3) * battleMOD[0])
                         damage_to_hero1 = max(0, Hero_2_MATTACK - hero1.MagicDefence)
                         damage_taken = hero1.take_damage(damage_to_hero1)
                         Damage = f"{Fore.MAGENTA}{damage_taken}{Style.RESET_ALL}"
@@ -409,7 +409,7 @@ def battle_round(hero1, hero2):
                     attackOption = 'Basic'
             
             if attackOption == 'Basic':
-                Hero_2_MATTACK = int(hero2.MagicAttack * battleMOD)
+                Hero_2_MATTACK = int(hero2.MagicAttack * battleMOD[0])
                 damage_to_hero1 = max(0, Hero_2_MATTACK - hero1.MagicDefence)
                 damage_taken = hero1.take_damage(damage_to_hero1)
                 Damage = f"{Fore.MAGENTA}{damage_taken}{Style.RESET_ALL}"
