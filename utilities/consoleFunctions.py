@@ -1,11 +1,13 @@
 import click
+from colorama import Fore, Style
 
 # Select a value from list by number
 def selectListValue(data):
     for i, value in enumerate(data, start=1):
         click.echo(f"{i}. {value}")
     
-    selection = click.prompt("Enter the number of your selection", type=int)
+    print("")
+    selection = click.prompt(f"{Fore.LIGHTCYAN_EX}Enter the number of your selection{Style.RESET_ALL}", type=int)
     
     if 1 <= selection <= len(data):
             selected_value = data[selection - 1]
