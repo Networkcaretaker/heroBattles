@@ -8,11 +8,11 @@ import json
 from colorama import Fore, Style
 
 # Sample Data
-dataset = 'baseData' # heroes, baseData
+dataset = 'gameData' # heroes, baseData
 datasetB = 'roleData' # roleData, raceData, classData
 csvFile = 'file/csv/heroRole.csv' # heroes.csv, heroRace.csv, heroClass.csv, heroRole.csv 
 jsonFile = 'file/json/heroRole,json' # heroes,json, heroRace,json, heroClass,json, heroRole,json 
-recordID = 'heroBaseData' # heroBaseData 
+recordID = 'heroStatData' # heroBaseData 
 heroID = ''
 
 # Create a JSON file from CSV data

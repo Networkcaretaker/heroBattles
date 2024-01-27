@@ -67,24 +67,25 @@ def createNewHero(Name, Race, Class, Role):
     return(heroID)
 
 # Get stat data for Hero Basic Stats from Firebase
-def getheroBaseData():
-    raceData = firebase.getSubRecords('baseData', 'heroBaseData', 'raceData', 'raceName')
-    classData = firebase.getSubRecords('baseData', 'heroBaseData', 'classData', 'className')
-    roleData = firebase.getSubRecords('baseData', 'heroBaseData', 'roleData', 'roleName')
+def getHeroStatData():
+    raceData = firebase.getSubRecords('gameData', 'heroStatData', 'raceData', 'raceName')
+    classData = firebase.getSubRecords('gameData', 'heroStatData', 'classData', 'className')
+    roleData = firebase.getSubRecords('gameData', 'heroStatData', 'roleData', 'roleName')
     return(raceData, classData, roleData)
 
 # Set hero stats in Firebase
 def setHeroBasicStats(heroID):
     hero = firebase.getRecord(dataset, heroID)
-    raceData = firebase.getSubRecords('baseData', 'heroBaseData', 'raceData', 'raceName')
-    classData = firebase.getSubRecords('baseData', 'heroBaseData', 'classData', 'className')
-    roleData = firebase.getSubRecords('baseData', 'heroBaseData', 'roleData', 'roleName')
-    
+    raceData = firebase.getSubRecords('gameData', 'heroStatData', 'raceData', 'raceName')
+    classData = firebase.getSubRecords('gameData', 'heroStatData', 'classData', 'className')
+    roleData = firebase.getSubRecords('gameData', 'heroStatData', 'roleData', 'roleName')
+
+    heroData = hero.to_dict()
+
     heroRace = hero.to_dict()['Race']
     heroClass = hero.to_dict()['Class']
     heroRole = hero.to_dict()['Role']
 
-    heroData = hero.to_dict()
     primaryStats = heroData['PrimaryStats']
     secondaryStats = heroData['SecondaryStats']
     battleStats = heroData['BattleStats']
@@ -188,7 +189,7 @@ def createNewHeroesFromInput():
     # Select a Race
     click.echo(f"{Fore.YELLOW}Choose a Race{Style.RESET_ALL}")
     races = []
-    raceData = firebase.getSubRecords('baseData', 'heroBaseData', 'raceData', 'raceName')
+    raceData = firebase.getSubRecords('gameData', 'heroStatData', 'raceData', 'raceName')
     for raceStat in raceData:
         races.append(raceStat.to_dict()['raceName'])
     Race = consoleFunctions.selectListValue(races)
@@ -196,7 +197,7 @@ def createNewHeroesFromInput():
     # Select a Class
     print(f"{Fore.YELLOW}Choose a Class{Style.RESET_ALL}")
     classes = []
-    classData = firebase.getSubRecords('baseData', 'heroBaseData', 'classData', 'className')
+    classData = firebase.getSubRecords('gameData', 'heroStatData', 'classData', 'className')
     for classStat in classData:
         classes.append(classStat.to_dict()['className'])
     Class = consoleFunctions.selectListValue(classes)
@@ -204,7 +205,7 @@ def createNewHeroesFromInput():
     # Select a Role
     print(f"{Fore.YELLOW}Choose a Role{Style.RESET_ALL}")
     roles = []
-    roleData = firebase.getSubRecords('baseData','heroBaseData', 'roleData', 'roleName')
+    roleData = firebase.getSubRecords('gameData','heroStatData', 'roleData', 'roleName')
     for roleStat in roleData:
         roles.append(roleStat.to_dict()['roleName'])
     Role = consoleFunctions.selectListValue(roles)
