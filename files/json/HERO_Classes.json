@@ -1,0 +1,506 @@
+[
+  {
+    "Class Name": "Control",
+    "Class Skill": "Agility",
+    "Class Title": "Agility Control",
+    "Strength": "0",
+    "Intelligence": "4",
+    "Agility": "1",
+    "Sorcery": "0"
+  },
+  {
+    "Class Name": "Control Healer",
+    "Class Skill": "Agility",
+    "Class Title": "Agility Control Healer",
+    "Strength": "0",
+    "Intelligence": "3",
+    "Agility": "1",
+    "Sorcery": "1"
+  },
+  {
+    "Class Name": "Control Warrior",
+    "Class Skill": "Agility",
+    "Class Title": "Agility Control Warrior",
+    "Strength": "0",
+    "Intelligence": "3",
+    "Agility": "2",
+    "Sorcery": "0"
+  },
+  {
+    "Class Name": "Healer",
+    "Class Skill": "Agility",
+    "Class Title": "Agility Healer",
+    "Strength": "0",
+    "Intelligence": "2",
+    "Agility": "1",
+    "Sorcery": "2"
+  },
+  {
+    "Class Name": "Healer Support",
+    "Class Skill": "Agility",
+    "Class Title": "Agility Healer Support",
+    "Strength": "1",
+    "Intelligence": "2",
+    "Agility": "2",
+    "Sorcery": "0"
+  },
+  {
+    "Class Name": "Mage",
+    "Class Skill": "Agility",
+    "Class Title": "Agility Mage",
+    "Strength": "0",
+    "Intelligence": "0",
+    "Agility": "1",
+    "Sorcery": "4"
+  },
+  {
+    "Class Name": "Mage Support",
+    "Class Skill": "Agility",
+    "Class Title": "Agility Mage Support",
+    "Strength": "1",
+    "Intelligence": "0",
+    "Agility": "1",
+    "Sorcery": "3"
+  },
+  {
+    "Class Name": "Mage Warrior",
+    "Class Skill": "Agility",
+    "Class Title": "Agility Mage Warrior",
+    "Strength": "0",
+    "Intelligence": "0",
+    "Agility": "2",
+    "Sorcery": "3"
+  },
+  {
+    "Class Name": "Support",
+    "Class Skill": "Agility",
+    "Class Title": "Agility Support",
+    "Strength": "2",
+    "Intelligence": "0",
+    "Agility": "1",
+    "Sorcery": "2"
+  },
+  {
+    "Class Name": "Support Healer",
+    "Class Skill": "Agility",
+    "Class Title": "Agility Support Healer",
+    "Strength": "1",
+    "Intelligence": "1",
+    "Agility": "2",
+    "Sorcery": "1"
+  },
+  {
+    "Class Name": "Tank",
+    "Class Skill": "Agility",
+    "Class Title": "Agility Tank",
+    "Strength": "4",
+    "Intelligence": "0",
+    "Agility": "1",
+    "Sorcery": "0"
+  },
+  {
+    "Class Name": "Tank Warrior",
+    "Class Skill": "Agility",
+    "Class Title": "Agility Tank Warrior",
+    "Strength": "3",
+    "Intelligence": "0",
+    "Agility": "2",
+    "Sorcery": "0"
+  },
+  {
+    "Class Name": "Warrior",
+    "Class Skill": "Agility",
+    "Class Title": "Agility Warrior",
+    "Strength": "0",
+    "Intelligence": "0",
+    "Agility": "5",
+    "Sorcery": "0"
+  },
+  {
+    "Class Name": "Warrior Healer",
+    "Class Skill": "Agility",
+    "Class Title": "Agility Warrior Healer",
+    "Strength": "0",
+    "Intelligence": "1",
+    "Agility": "3",
+    "Sorcery": "1"
+  },
+  {
+    "Class Name": "Control",
+    "Class Skill": "Intelligence",
+    "Class Title": "Intelligence Control",
+    "Strength": "0",
+    "Intelligence": "5",
+    "Agility": "0",
+    "Sorcery": "0"
+  },
+  {
+    "Class Name": "Control Support",
+    "Class Skill": "Intelligence",
+    "Class Title": "Intelligence Control Support",
+    "Strength": "1",
+    "Intelligence": "3",
+    "Agility": "1",
+    "Sorcery": "0"
+  },
+  {
+    "Class Name": "Healer",
+    "Class Skill": "Intelligence",
+    "Class Title": "Intelligence Healer",
+    "Strength": "1",
+    "Intelligence": "2",
+    "Agility": "1",
+    "Sorcery": "1"
+  },
+  {
+    "Class Name": "Healer Support",
+    "Class Skill": "Intelligence",
+    "Class Title": "Intelligence Healer Support",
+    "Strength": "0",
+    "Intelligence": "1",
+    "Agility": "2",
+    "Sorcery": "2"
+  },
+  {
+    "Class Name": "Mage",
+    "Class Skill": "Intelligence",
+    "Class Title": "Intelligence Mage",
+    "Strength": "0",
+    "Intelligence": "1",
+    "Agility": "0",
+    "Sorcery": "4"
+  },
+  {
+    "Class Name": "Mage Control",
+    "Class Skill": "Intelligence",
+    "Class Title": "Intelligence Mage Control",
+    "Strength": "0",
+    "Intelligence": "2",
+    "Agility": "0",
+    "Sorcery": "3"
+  },
+  {
+    "Class Name": "Mage Support",
+    "Class Skill": "Intelligence",
+    "Class Title": "Intelligence Mage Support",
+    "Strength": "1",
+    "Intelligence": "1",
+    "Agility": "0",
+    "Sorcery": "3"
+  },
+  {
+    "Class Name": "Support",
+    "Class Skill": "Intelligence",
+    "Class Title": "Intelligence Support",
+    "Strength": "2",
+    "Intelligence": "1",
+    "Agility": "2",
+    "Sorcery": "0"
+  },
+  {
+    "Class Name": "Support Healer",
+    "Class Skill": "Intelligence",
+    "Class Title": "Intelligence Support Healer",
+    "Strength": "2",
+    "Intelligence": "2",
+    "Agility": "0",
+    "Sorcery": "1"
+  },
+  {
+    "Class Name": "Tank",
+    "Class Skill": "Intelligence",
+    "Class Title": "Intelligence Tank",
+    "Strength": "4",
+    "Intelligence": "1",
+    "Agility": "0",
+    "Sorcery": "0"
+  },
+  {
+    "Class Name": "Tank Control",
+    "Class Skill": "Intelligence",
+    "Class Title": "Intelligence Tank Control",
+    "Strength": "3",
+    "Intelligence": "2",
+    "Agility": "0",
+    "Sorcery": "0"
+  },
+  {
+    "Class Name": "Tank Support",
+    "Class Skill": "Intelligence",
+    "Class Title": "Intelligence Tank Support",
+    "Strength": "3",
+    "Intelligence": "1",
+    "Agility": "1",
+    "Sorcery": "0"
+  },
+  {
+    "Class Name": "Warrior",
+    "Class Skill": "Intelligence",
+    "Class Title": "Intelligence Warrior",
+    "Strength": "0",
+    "Intelligence": "1",
+    "Agility": "4",
+    "Sorcery": "0"
+  },
+  {
+    "Class Name": "Warrior Control",
+    "Class Skill": "Intelligence",
+    "Class Title": "Intelligence Warrior Control",
+    "Strength": "0",
+    "Intelligence": "2",
+    "Agility": "3",
+    "Sorcery": "0"
+  },
+  {
+    "Class Name": "Warrior Support",
+    "Class Skill": "Intelligence",
+    "Class Title": "Intelligence Warrior Support",
+    "Strength": "1",
+    "Intelligence": "1",
+    "Agility": "3",
+    "Sorcery": "0"
+  },
+  {
+    "Class Name": "Control",
+    "Class Skill": "Sorcery",
+    "Class Title": "Sorcery Control",
+    "Strength": "0",
+    "Intelligence": "4",
+    "Agility": "0",
+    "Sorcery": "1"
+  },
+  {
+    "Class Name": "Control Mage",
+    "Class Skill": "Sorcery",
+    "Class Title": "Sorcery Control Mage",
+    "Strength": "0",
+    "Intelligence": "3",
+    "Agility": "0",
+    "Sorcery": "2"
+  },
+  {
+    "Class Name": "Healer",
+    "Class Skill": "Sorcery",
+    "Class Title": "Sorcery Healer",
+    "Strength": "1",
+    "Intelligence": "1",
+    "Agility": "1",
+    "Sorcery": "2"
+  },
+  {
+    "Class Name": "Healer Support",
+    "Class Skill": "Sorcery",
+    "Class Title": "Sorcery Healer Support",
+    "Strength": "0",
+    "Intelligence": "2",
+    "Agility": "2",
+    "Sorcery": "1"
+  },
+  {
+    "Class Name": "Mage",
+    "Class Skill": "Sorcery",
+    "Class Title": "Sorcery Mage",
+    "Strength": "0",
+    "Intelligence": "0",
+    "Agility": "0",
+    "Sorcery": "5"
+  },
+  {
+    "Class Name": "Mage Healer",
+    "Class Skill": "Sorcery",
+    "Class Title": "Sorcery Mage Healer",
+    "Strength": "0",
+    "Intelligence": "1",
+    "Agility": "1",
+    "Sorcery": "3"
+  },
+  {
+    "Class Name": "Support",
+    "Class Skill": "Sorcery",
+    "Class Title": "Sorcery Support",
+    "Strength": "2",
+    "Intelligence": "0",
+    "Agility": "2",
+    "Sorcery": "1"
+  },
+  {
+    "Class Name": "Support Healer",
+    "Class Skill": "Sorcery",
+    "Class Title": "Sorcery Support Healer",
+    "Strength": "2",
+    "Intelligence": "1",
+    "Agility": "0",
+    "Sorcery": "2"
+  },
+  {
+    "Class Name": "Tank",
+    "Class Skill": "Sorcery",
+    "Class Title": "Sorcery Tank",
+    "Strength": "4",
+    "Intelligence": "0",
+    "Agility": "0",
+    "Sorcery": "1"
+  },
+  {
+    "Class Name": "Tank Support",
+    "Class Skill": "Sorcery",
+    "Class Title": "Sorcery Tank Support",
+    "Strength": "3",
+    "Intelligence": "0",
+    "Agility": "1",
+    "Sorcery": "1"
+  },
+  {
+    "Class Name": "Warrior",
+    "Class Skill": "Sorcery",
+    "Class Title": "Sorcery Warrior",
+    "Strength": "0",
+    "Intelligence": "0",
+    "Agility": "4",
+    "Sorcery": "1"
+  },
+  {
+    "Class Name": "Warrior Mage",
+    "Class Skill": "Sorcery",
+    "Class Title": "Sorcery Warrior Mage",
+    "Strength": "0",
+    "Intelligence": "0",
+    "Agility": "3",
+    "Sorcery": "2"
+  },
+  {
+    "Class Name": "Warrior Support",
+    "Class Skill": "Sorcery",
+    "Class Title": "Sorcery Warrior Support",
+    "Strength": "1",
+    "Intelligence": "0",
+    "Agility": "3",
+    "Sorcery": "1"
+  },
+  {
+    "Class Name": "Control",
+    "Class Skill": "Strength",
+    "Class Title": "Strength Control",
+    "Strength": "1",
+    "Intelligence": "4",
+    "Agility": "0",
+    "Sorcery": "0"
+  },
+  {
+    "Class Name": "Control Support",
+    "Class Skill": "Strength",
+    "Class Title": "Strength Control Support",
+    "Strength": "1",
+    "Intelligence": "3",
+    "Agility": "0",
+    "Sorcery": "1"
+  },
+  {
+    "Class Name": "Control Tank",
+    "Class Skill": "Strength",
+    "Class Title": "Strength Control Tank",
+    "Strength": "2",
+    "Intelligence": "3",
+    "Agility": "0",
+    "Sorcery": "0"
+  },
+  {
+    "Class Name": "Healer",
+    "Class Skill": "Strength",
+    "Class Title": "Strength Healer",
+    "Strength": "1",
+    "Intelligence": "2",
+    "Agility": "0",
+    "Sorcery": "2"
+  },
+  {
+    "Class Name": "Healer Support",
+    "Class Skill": "Strength",
+    "Class Title": "Strength Healer Support",
+    "Strength": "1",
+    "Intelligence": "0",
+    "Agility": "2",
+    "Sorcery": "2"
+  },
+  {
+    "Class Name": "Mage",
+    "Class Skill": "Strength",
+    "Class Title": "Strength Mage",
+    "Strength": "1",
+    "Intelligence": "0",
+    "Agility": "0",
+    "Sorcery": "4"
+  },
+  {
+    "Class Name": "Mage Tank",
+    "Class Skill": "Strength",
+    "Class Title": "Strength Mage Tank",
+    "Strength": "2",
+    "Intelligence": "0",
+    "Agility": "0",
+    "Sorcery": "3"
+  },
+  {
+    "Class Name": "Support",
+    "Class Skill": "Strength",
+    "Class Title": "Strength Support",
+    "Strength": "2",
+    "Intelligence": "1",
+    "Agility": "1",
+    "Sorcery": "1"
+  },
+  {
+    "Class Name": "Support Healer",
+    "Class Skill": "Strength",
+    "Class Title": "Strength Support Healer",
+    "Strength": "2",
+    "Intelligence": "2",
+    "Agility": "1",
+    "Sorcery": "0"
+  },
+  {
+    "Class Name": "Tank",
+    "Class Skill": "Strength",
+    "Class Title": "Strength Tank",
+    "Strength": "5",
+    "Intelligence": "0",
+    "Agility": "0",
+    "Sorcery": "0"
+  },
+  {
+    "Class Name": "Tank Healer",
+    "Class Skill": "Strength",
+    "Class Title": "Strength Tank Healer",
+    "Strength": "3",
+    "Intelligence": "1",
+    "Agility": "0",
+    "Sorcery": "1"
+  },
+  {
+    "Class Name": "Tank Mage",
+    "Class Skill": "Strength",
+    "Class Title": "Strength Tank Mage",
+    "Strength": "3",
+    "Intelligence": "0",
+    "Agility": "0",
+    "Sorcery": "2"
+  },
+  {
+    "Class Name": "Warrior",
+    "Class Skill": "Strength",
+    "Class Title": "Strength Warrior",
+    "Strength": "1",
+    "Intelligence": "0",
+    "Agility": "4",
+    "Sorcery": "0"
+  },
+  {
+    "Class Name": "Warrior Tank",
+    "Class Skill": "Strength",
+    "Class Title": "Strength Warrior Tank",
+    "Strength": "2",
+    "Intelligence": "0",
+    "Agility": "3",
+    "Sorcery": "0"
+  }
+]

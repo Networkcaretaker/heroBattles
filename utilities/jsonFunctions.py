@@ -1,3 +1,4 @@
+import firebase.firebase as firebase
 import json
 import csv
 from colorama import Fore, Style
@@ -39,14 +40,24 @@ def updateJsonFile(file_path, new_item):
 def jsonToFirebase(records, dataset):
     results = []
     for record in records:
-        recordID = addRecord(dataset, record)
+        recordID = firebase.addRecord(dataset, record)
         results.append([recordID, record])
     return(results)
 
 # Upload data from JSON to Firebase Sub-collection
-def jsonToFirebaseSub(records, dataset, recordID, datasetB):
+def jsonToFirebaseSub(dbCollection, documentID, dbSubCollection, records):
     results = []
     for record in records:
-        subrecordID = addSubRecord(dataset, record, datasetB, recordID)
+        subrecordID = firebase.addSubRecord(dbCollection, documentID, dbSubCollection, record)
+        results.append([subrecordID, record])
+    return(results)
+
+# Upload data from JSON to Firebase Sub-collection with ID
+def jsonToFirebaseSubWithID(dbCollection, documentID, dbSubCollection, records):
+    results = []
+    for record in records:
+        recordID = record['ID']
+        recordData = record['DATA']
+        subrecordID = firebase.addSubRecordWithID(dbCollection, documentID, dbSubCollection, recordID, recordData)
         results.append([subrecordID, record])
     return(results)

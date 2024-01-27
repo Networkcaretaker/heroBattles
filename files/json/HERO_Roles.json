@@ -1,0 +1,58 @@
+[
+  {
+    "Role Name": "Brawler",
+    "Critical Hit": "2",
+    "Dodge": "0",
+    "Counter": "8",
+    "Block": "10",
+    "Healing": "0"
+  },
+  {
+    "Role Name": "Marksman",
+    "Critical Hit": "2",
+    "Dodge": "8",
+    "Counter": "0",
+    "Block": "10",
+    "Healing": "0"
+  },
+  {
+    "Role Name": "Commander",
+    "Critical Hit": "6",
+    "Dodge": "2",
+    "Counter": "2",
+    "Block": "8",
+    "Healing": "2"
+  },
+  {
+    "Role Name": "Medic",
+    "Critical Hit": "0",
+    "Dodge": "0",
+    "Counter": "0",
+    "Block": "10",
+    "Healing": "10"
+  },
+  {
+    "Role Name": "Necromancer",
+    "Critical Hit": "2",
+    "Dodge": "2",
+    "Counter": "4",
+    "Block": "8",
+    "Healing": "4"
+  },
+  {
+    "Role Name": "Werewolf",
+    "Critical Hit": "8",
+    "Dodge": "4",
+    "Counter": "0",
+    "Block": "6",
+    "Healing": "2"
+  },
+  {
+    "Role Name": "Zombie",
+    "Critical Hit": "2",
+    "Dodge": "5",
+    "Counter": "5",
+    "Block": "8",
+    "Healing": "0"
+  }
+]

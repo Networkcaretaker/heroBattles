@@ -1,0 +1,8 @@
+Role Name,Critical Hit,Dodge,Counter,Block,Healing
+Brawler,2,0,8,10,0
+Marksman,2,8,0,10,0
+Commander,6,2,2,8,2
+Medic,0,0,0,10,10
+Necromancer,2,2,4,8,4
+Werewolf,8,4,0,6,2
+Zombie,2,5,5,8,0

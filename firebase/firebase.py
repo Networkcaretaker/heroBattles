@@ -38,9 +38,15 @@ def addRecord(dataset, data):
     return (recordID)
 
 # Add a sub-record
-def addSubRecord(dataset, record, datasetB, data):
-    data = db.collection(dataset).document(record).collection(datasetB).add(data)
+def addSubRecord(dbCollection, documentID, dbSubCollection, record):
+    data = db.collection(dbCollection).document(documentID).collection(dbSubCollection).add(record)
     recordID = data[1].__dict__['_path'][1]
+    return (recordID)
+
+# Add a sub-record with ID
+def addSubRecordWithID(dbCollection, documentID, dbSubCollection, recordID, record):
+    data = db.collection(dbCollection).document(documentID).collection(dbSubCollection).document(recordID).set(record)
+    # recordID = data[1].__dict__['_path'][1]
     return (recordID)
 
 # Update a record by ID

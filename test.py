@@ -4,15 +4,16 @@ import firebase.firebase as firebase
 import functions.heroFunctions as heroFunctions
 import functions.battleFunctions as battleFunctions
 import functions.playerFunctions as playerFunctions
+import functions.backendFunctions as backendFunctions
 import json
 from colorama import Fore, Style
 
 # Sample Data
-dataset = 'gameData' # heroes, baseData
-datasetB = 'roleData' # roleData, raceData, classData
-csvFile = 'file/csv/heroRole.csv' # heroes.csv, heroRace.csv, heroClass.csv, heroRole.csv 
-jsonFile = 'file/json/heroRole,json' # heroes,json, heroRace,json, heroClass,json, heroRole,json 
-recordID = 'heroStatData' # heroBaseData 
+dataset = 'GameData' # heroes, baseData
+datasetB = 'RaceData' # roleData, raceData, classData
+csvFile = 'files/csv/HERO_Races.csv' # heroes.csv, heroRace.csv, heroClass.csv, heroRole.csv 
+jsonFile = 'files/json/HERO_Races.json' # heroes,json, heroRace,json, heroClass,json, heroRole,json 
+recordID = 'HeroStatData' # heroBaseData 
 heroID = ''
 
 # Create a JSON file from CSV data
@@ -24,6 +25,11 @@ heroID = ''
 # print(f"{Fore.YELLOW}Success: {Fore.GREEN}{jsonFile}{Style.RESET_ALL} has been created.")
 # results = jsonFunctions.jsonToFirebase(data, dataset)
 # print(results)
+def TESTcreateJsonFromCsv():
+    csvFile = 'files/csv/test.csv'
+    jsonFile = 'files/json/test.json'
+    data = jsonFunctions.createJsonFromCsv(csvFile, jsonFile)
+    print(f"{data}")
 
 # Create a JSON file from CSV data and upload to firebase sub-collection
 def uploadSubCollectionFromFile():
@@ -35,6 +41,9 @@ def uploadSubCollectionFromFile():
     
 # Test Functions
 testFunctions = [
+    'uploadHeroRaceFromCsvToFirebase',
+    'uploadHeroClassFromCsvToFirebase',
+    'uploadHeroRoleFromCsvToFirebase',
     'createNewHeroesFromFile',
     'createNewHeroesFromInput',
     'viewHero',
@@ -42,7 +51,8 @@ testFunctions = [
     'startBattle',
     'uploadSubCollectionFromFile',
     'addPlayerXP',
-    'createPlayer'
+    'createPlayer',
+    'TESTcreateJsonFromCsv'
 ]
 validFileType = [
     'CSV',
@@ -63,12 +73,21 @@ if selectFunction == 'createNewHeroesFromFile':
     if selectFileType == 'CSV':
         print(f'{Fore.RED}Warning:{Style.RESET_ALL} This function will overwrite the saved JSON file \n Do you want to continue? (Type NO to cancel)')
         warningCheck = input("Continue: ")
-        if warningCheck != 'NO':
+        if warningCheck == 'NO':
             print(f"Function {Fore.GREEN}{selectFunction}{Style.RESET_ALL} cancelled")
             exit()
 
     heroFunctions.createNewHeroesFromFile(selectFileType)
         
+if selectFunction == 'uploadHeroRaceFromCsvToFirebase':
+    backendFunctions.uploadHeroRaceFromCsvToFirebase()
+
+if selectFunction == 'uploadHeroClassFromCsvToFirebase':
+    backendFunctions.uploadHeroClassFromCsvToFirebase()
+
+if selectFunction == 'uploadHeroRoleFromCsvToFirebase':
+    backendFunctions.uploadHeroRoleFromCsvToFirebase()
+
 if selectFunction == 'createNewHeroesFromInput':
     heroFunctions.createNewHeroesFromInput()
 
@@ -83,6 +102,9 @@ if selectFunction == 'startBattle':
 
 if selectFunction == 'uploadSubCollectionFromFile':
     uploadSubCollectionFromFile()
+
+if selectFunction == 'TESTcreateJsonFromCsv':
+    results = TESTcreateJsonFromCsv()
 
 if selectFunction == 'createPlayer':
     results = playerFunctions.createPlayer()
@@ -101,7 +123,7 @@ if selectFunction == 'addPlayerXP':
     add_xp = 15
     playerFunctions.addPlayerXP(add_xp, playerData)
 
-print(results)
+# print(results)
 print(f"{Fore.YELLOW}Success: {Fore.GREEN}{selectFunction}{Style.RESET_ALL} function complete.")
 
 # DEV FUNCTIONS
