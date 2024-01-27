@@ -15,22 +15,22 @@ def uploadHeroRaceFromCsvToFirebase():
         heroRaceData = {
             "ID": d['Race Title'],
             "DATA": {
-                "Race Name": d['Race Name'],
-                "Race Type": d['Race Type'],
-                "Race Moto": d['Race Moto'],
-                "Race Home": d['Race Home'],
-                "Race Description": d['Race Description'],
+                "Race_Name": d['Race Name'],
+                "Race_Type": d['Race Type'],
+                "Race_Moto": d['Race Moto'],
+                "Race_Home": d['Race Home'],
+                "Race_Description": d['Race Description'],
                 "Statistics": {
                     "Primary": 
                         {
-                            "Stength": d['Strength'],
+                            "Strength": d['Strength'],
                             "Intelligence": d['Intelligence'],
                             "Agility": d['Agility'],
                             "Sorcery": d['Sorcery']
                         },
                     "Secondary": 
                         {
-                            "Critical Hit": d['Critical Hit'],
+                            "Critical_Hit": d['Critical Hit'],
                             "Dodge": d['Dodge'],
                             "Counter": d['Counter'],
                             "Block": d['Block'],
@@ -57,12 +57,12 @@ def uploadHeroClassFromCsvToFirebase():
         heroClassData = {
             "ID": d['Class Title'],
             "DATA": {
-                "Class Name": d['Class Name'],
-                "Class Skill": d['Class Skill'],
+                "Class_Name": d['Class Name'],
+                "Class_Skill": d['Class Skill'],
                 "Statistics": {
                     "Primary": 
                         {
-                            "Stength": d['Strength'],
+                            "Strength": d['Strength'],
                             "Intelligence": d['Intelligence'],
                             "Agility": d['Agility'],
                             "Sorcery": d['Sorcery']
@@ -87,11 +87,11 @@ def uploadHeroRoleFromCsvToFirebase():
         heroRoleData = {
             "ID": d['Role Name'],
             "DATA": {
-                "Role Name": d['Role Name'],
+                "Role_Name": d['Role Name'],
                 "Statistics": {
                     "Secondary": 
                         {
-                            "Critical Hit": d['Critical Hit'],
+                            "Critical_Hit": d['Critical Hit'],
                             "Dodge": d['Dodge'],
                             "Counter": d['Counter'],
                             "Block": d['Block'],

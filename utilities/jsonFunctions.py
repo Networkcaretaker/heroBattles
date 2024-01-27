@@ -34,7 +34,7 @@ def updateJsonFile(file_path, new_item):
     with open(file_path, 'w') as file:
         json.dump(data, file, indent=2)
 
-    print(f"{Fore.YELLOW}Success:{Style.RESET_ALL} JSON file has been updated")
+    print(f"\n{Fore.YELLOW}Success:{Style.RESET_ALL} JSON file has been updated\n")
 
 # Upload data from JSON to Firebase
 def jsonToFirebase(records, dataset):

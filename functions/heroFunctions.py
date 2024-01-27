@@ -10,16 +10,22 @@ heroData = {
     "Title":'heroTitle',
     "Race":'heroRace',
     "Class":'heroClass',
+    "Class_Name": 'className',
+    "Class_Skill":'heroSkill',
     "Role":'heroRole',
+    "Description": '',
     "Experience": {
         "Level":1,
         "Rank":1,
         "Level XP":0,
         "Total XP'":0
     },
-    "PrimaryStats":{},
-    "SecondaryStats":{},
-    "BattleStats":{}
+    "Stats":{
+        "Primary":{},
+        "Secondary":{},
+        "Energy":{},
+        "Battle":{}
+    }
 }
 PrimaryStats = {
     "Strength":0,
@@ -28,58 +34,56 @@ PrimaryStats = {
     "Sorcery":0
 }
 SecondaryStats = {
-    "Health":0,
-    "Stamina":0,
-    "Magicka":0,
-    "HealthRecovery":0,
-    "StaminaRecovery":0,
-    "MagickaRecovery":0
-}
-BattleStats = {
-    "PhysicalAttack":0,
-    "MagicAttack":0,
-    "PhysicalDefence":0,
-    "MagicDefence":0,
     "Healing":0,
-    "Armor":0,
-    "Resistance":0,
     "Dodge":0,
     "Counter":0,
     "Block":0,
-    "CriticalHit":0
+    "Critical_Hit":0
+}
+EnergyStats = {
+    "Health":0,
+    "Stamina":0,
+    "Magicka":0,
+    "Health_Recovery":0,
+    "Stamina_Recovery":0,
+    "Magicka_Recovery":0
+}
+BattleStats = {
+    "Physical_Attack":0,
+    "Magic_Attack":0,
+    "Physical_Defence":0,
+    "Magic_Defence":0,
+    "Armor":0,
+    "Resistance":0,
+    "Weapon_Damage": 0,
+    "Magic_Damage": 0
+}
+Stats = {
+    "Primary": PrimaryStats,
+    "Secondary": SecondaryStats,
+    "Energy": EnergyStats,
+    "Battle": BattleStats
 }
 
-dataset = 'heroes'
+dataset = 'Heroes'
 
 # Create a new hero and add to firebase
-def createNewHero(Name, Race, Class, Role):
+def createNewHero(Name, Race, Class, Role, Class_Name, Class_Skill, Title, Description):
     # dataset = 'heroes'
-    keys = ['Name', 'Race', 'Class', 'Role', 'PrimaryStats', 'SecondaryStats', 'BattleStats']
-    values = [Name, Race, Class, Role, PrimaryStats, SecondaryStats, BattleStats]
+    keys = ['Name', 'Race', 'Class', 'Role', 'Class_Name', 'Class_Skill', 'Stats', 'Title', 'Description']
+    values = [Name, Race, Class, Role, Class_Name, Class_Skill, Stats, Title, Description]
     heroData.update({key: value for key, value in zip(keys, values)})
     
     # Add hero to database
     heroID = firebase.addRecord(dataset, heroData)
-
-    # Convert the list to a JSON-formatted string
-    # json_heroData = json.dumps(heroData, indent=2)
-    # print(f"Success: New hero \033[91m{heroData['Name']}\033[0m created.\n heroID: \033[32m{heroID}\033[0m \n heroData: {json_heroData}")
-
     return(heroID)
-
-# Get stat data for Hero Basic Stats from Firebase
-def getHeroStatData():
-    raceData = firebase.getSubRecords('gameData', 'heroStatData', 'raceData', 'raceName')
-    classData = firebase.getSubRecords('gameData', 'heroStatData', 'classData', 'className')
-    roleData = firebase.getSubRecords('gameData', 'heroStatData', 'roleData', 'roleName')
-    return(raceData, classData, roleData)
 
 # Set hero stats in Firebase
 def setHeroBasicStats(heroID):
     hero = firebase.getRecord(dataset, heroID)
-    raceData = firebase.getSubRecords('gameData', 'heroStatData', 'raceData', 'raceName')
-    classData = firebase.getSubRecords('gameData', 'heroStatData', 'classData', 'className')
-    roleData = firebase.getSubRecords('gameData', 'heroStatData', 'roleData', 'roleName')
+    raceData = firebase.getSubRecords('GameData', 'HeroStatData', 'RaceData', 'Race_Name')
+    classData = firebase.getSubRecords('GameData', 'HeroStatData', 'ClassData', 'Class_Name')
+    roleData = firebase.getSubRecords('GameData', 'HeroStatData', 'RoleData', 'Role_Name')
 
     heroData = hero.to_dict()
 
@@ -87,18 +91,19 @@ def setHeroBasicStats(heroID):
     heroClass = hero.to_dict()['Class']
     heroRole = hero.to_dict()['Role']
 
-    primaryStats = heroData['PrimaryStats']
-    secondaryStats = heroData['SecondaryStats']
-    battleStats = heroData['BattleStats']
+    primaryStats = heroData['Stats']['Primary']
+    secondaryStats = heroData['Stats']['Secondary']
+    energyStats = heroData['Stats']['Energy']
+    battleStats = heroData['Stats']['Battle']
     experience = heroData['Experience']
 
     # Set hero primary stats from Race data
     for raceStat in raceData:
-        if raceStat.to_dict()['raceName'] == heroRace:
-            Strength = raceStat.to_dict()['Strength']
-            Intelligence = raceStat.to_dict()['Intelligence']
-            Agility = raceStat.to_dict()['Agility']
-            Sorcery = raceStat.to_dict()['Sorcery']
+        if raceStat.to_dict()['Race_Name'] == heroRace:
+            Strength = raceStat.to_dict()['Statistics']['Primary']['Strength']
+            Intelligence = raceStat.to_dict()['Statistics']['Primary']['Intelligence']
+            Agility = raceStat.to_dict()['Statistics']['Primary']['Agility']
+            Sorcery = raceStat.to_dict()['Statistics']['Primary']['Sorcery']
             primaryStats['Strength'] = int(primaryStats['Strength']) + int(Strength)
             primaryStats['Intelligence'] = int(primaryStats['Intelligence']) + int(Intelligence)
             primaryStats['Agility'] = int(primaryStats['Agility']) + int(Agility)
@@ -106,27 +111,29 @@ def setHeroBasicStats(heroID):
 
     # Set hero primary stats from Class data
     for classStat in classData:
-        if classStat.to_dict()['className'] == heroClass:
-            Strength = classStat.to_dict()['Strength']
-            Intelligence = classStat.to_dict()['Intelligence']
-            Agility = classStat.to_dict()['Agility']
-            Sorcery = classStat.to_dict()['Sorcery']
+        if classStat.id == heroClass:
+            Strength = classStat.to_dict()['Statistics']['Primary']['Strength']
+            Intelligence = classStat.to_dict()['Statistics']['Primary']['Intelligence']
+            Agility = classStat.to_dict()['Statistics']['Primary']['Agility']
+            Sorcery = classStat.to_dict()['Statistics']['Primary']['Sorcery']
             primaryStats['Strength'] = int(primaryStats['Strength']) + int(Strength)
             primaryStats['Intelligence'] = int(primaryStats['Intelligence']) + int(Intelligence)
             primaryStats['Agility'] = int(primaryStats['Agility']) + int(Agility)
             primaryStats['Sorcery'] = int(primaryStats['Sorcery']) + int(Sorcery)
     
-    # Set hero battle stats from Role data
+    # Set hero secondary stats from Role data
     for roleStat in roleData:
-        if roleStat.to_dict()['roleName'] == heroRole:
-            Block = roleStat.to_dict()['Block']
-            Counter = roleStat.to_dict()['Counter']
-            Dodge = roleStat.to_dict()['Dodge']
-            CriticalHit = roleStat.to_dict()['CriticalHit']
-            battleStats['Block'] = int(battleStats['Block']) + int(Block)
-            battleStats['Counter'] = int(battleStats['Counter']) + int(Counter)
-            battleStats['Dodge'] = int(battleStats['Dodge']) + int(Dodge)
-            battleStats['CriticalHit'] = int(battleStats['CriticalHit']) + int(CriticalHit)
+        if roleStat.id == heroRole:
+            Block = roleStat.to_dict()['Statistics']['Secondary']['Block']
+            Counter = roleStat.to_dict()['Statistics']['Secondary']['Counter']
+            Dodge = roleStat.to_dict()['Statistics']['Secondary']['Dodge']
+            Critical_Hit = roleStat.to_dict()['Statistics']['Secondary']['Critical_Hit']
+            Healing = roleStat.to_dict()['Statistics']['Secondary']['Healing']
+            secondaryStats['Block'] = int(secondaryStats['Block']) + int(Block)
+            secondaryStats['Counter'] = int(secondaryStats['Counter']) + int(Counter)
+            secondaryStats['Dodge'] = int(secondaryStats['Dodge']) + int(Dodge)
+            secondaryStats['Critical_Hit'] = int(secondaryStats['Critical_Hit']) + int(Critical_Hit)
+            secondaryStats['Healing'] = int(secondaryStats['Healing']) + int(Healing)
 
     # Calculate Primary Stats from Experience
     primaryStats['Strength'] = int(primaryStats['Strength'] + experience['Level']) * experience['Rank']
@@ -134,86 +141,99 @@ def setHeroBasicStats(heroID):
     primaryStats['Agility'] = int(primaryStats['Agility'] + experience['Level']) * experience['Rank']
     primaryStats['Sorcery'] = int(primaryStats['Sorcery'] + experience['Level']) * experience['Rank']
 
-    # Calculate Secondary Stats
-    secondaryStats['Health'] = (500 * experience['Level']) + (primaryStats['Strength'] * (experience['Rank'] * 50))
-    secondaryStats['Stamina'] = (primaryStats['Agility'] * 10) * experience['Rank']
-    secondaryStats['Magicka'] = (primaryStats['Sorcery'] * 10) * experience['Rank']
-    secondaryStats['HealthRecovery'] = (experience['Level']*10) + ((secondaryStats['Health']*0.2)*(experience['Rank']*0.5) + (primaryStats['Intelligence'] + primaryStats['Sorcery']))
-    secondaryStats['StaminaRecovery'] = (experience['Level']*10) + ((secondaryStats['Stamina']*0.3)*(experience['Rank']*0.5))
-    secondaryStats['MagickaRecovery'] = (experience['Level']*10) + ((secondaryStats['Magicka']*0.3)*(experience['Rank']*0.5))
+    # Calculate Energy Stats
+    energyStats['Health'] = (500 * experience['Level']) + (primaryStats['Strength'] * (experience['Rank'] * 50))
+    energyStats['Stamina'] = (primaryStats['Agility'] * 10) * experience['Rank']
+    energyStats['Magicka'] = (primaryStats['Sorcery'] * 10) * experience['Rank']
+    energyStats['Health_Recovery'] = (experience['Level']*10) + ((energyStats['Health']*0.2)*(experience['Rank']*0.5) + (primaryStats['Intelligence'] + primaryStats['Sorcery']))
+    energyStats['Stamina_Recovery'] = (experience['Level']*10) + ((energyStats['Stamina']*0.3)*(experience['Rank']*0.5))
+    energyStats['Magicka_Recovery'] = (experience['Level']*10) + ((energyStats['Magicka']*0.3)*(experience['Rank']*0.5))
 
     # Calculate Battle Stats
-    battleStats['PhysicalAttack'] = primaryStats['Strength'] + (primaryStats['Agility'] * 2) * 10
-    battleStats['MagicAttack'] = primaryStats['Strength'] + (primaryStats['Sorcery'] * 2) * 10
-    battleStats['PhysicalDefence'] = primaryStats['Intelligence'] + (primaryStats['Strength'] * 2) * 8
-    battleStats['MagicDefence'] = primaryStats['Strength'] + (primaryStats['Intelligence'] * 2) * 8
-    battleStats['Healing'] = primaryStats['Intelligence'] + primaryStats['Sorcery']
-
-    battleStats['Armor'] = 100
-    battleStats['Resistance'] = 100
-
-    # Update Class and Skills
-    splitClass = heroClass.split()
-    heroData['Skill'] = splitClass[0]
-    heroData['Class'] = splitClass[1]
-    if len(splitClass) > 2:
-        heroData['Class'] = splitClass[1] + ' ' + splitClass[0-1]
+    battleStats['Physical_Attack'] = primaryStats['Strength'] + (primaryStats['Agility'] * 2) * 10
+    battleStats['Magic_Attack'] = primaryStats['Strength'] + (primaryStats['Sorcery'] * 2) * 10
+    battleStats['Physical_Defence'] = primaryStats['Intelligence'] + (primaryStats['Strength'] * 2) * 8
+    battleStats['Magic_Defence'] = primaryStats['Strength'] + (primaryStats['Intelligence'] * 2) * 8
+    battleStats['Armor'] = 0
+    battleStats['Resistance'] = 0
+    battleStats['Weapon_Damage'] = 0
+    battleStats['Magic_Damage'] = 0
 
     # Add stat data to hero
-    heroData['PrimaryStats'] = primaryStats
-    heroData['SecondaryStats'] = secondaryStats
-    heroData['BattleStats'] = battleStats
+    heroData['Stats']['Primary'] = primaryStats
+    heroData['Stats']['Secondary'] = secondaryStats
+    heroData['Stats']['Battle'] = battleStats
+    heroData['Stats']['Energy'] = energyStats
 
     # Update hero data in Firebase
     firebase.updateRecord(dataset, heroID, heroData)
     return(heroData)
 
-# Select a value from list by number
-def selectListValue(data):
-    for i, value in enumerate(data, start=1):
-        click.echo(f"{i}. {value}")
-    
-    selection = click.prompt("Enter the number of your selection", type=int)
-
-    if 1 <= selection <= len(data):
-            selected_value = data[selection - 1]
-    else:
-        click.echo("Invalid selection. Please try again.")
-    
-    return(selected_value)
-
 # Create a new hero from input, add to json file and upload to Firebase
 def createNewHeroesFromInput():
-    print(f"{Fore.YELLOW}Create a new Hero{Style.RESET_ALL}")
+    print(f"\n{Fore.YELLOW}Create a new Hero{Style.RESET_ALL}\n")
     Name = input("Enter hero name: ")
+    Title = input("Enter hero title: ")
+    Description = input("Enter hero description: ")
 
     # Select a Race
-    click.echo(f"{Fore.YELLOW}Choose a Race{Style.RESET_ALL}")
+    click.echo(f"\n{Fore.YELLOW}Choose a Race{Style.RESET_ALL}\n")
+    raceTypes = [
+        'Demon',
+        'Human',
+        'Mystical Entity',
+        'AI Machine',
+        'Orc',
+        'Dwarf',
+        'Elf'
+    ]
+    raceType = consoleFunctions.selectListValue(raceTypes)
+
+    click.echo(f"\n{Fore.YELLOW}{raceType}{Style.RESET_ALL}\n")
+
     races = []
-    raceData = firebase.getSubRecords('gameData', 'heroStatData', 'raceData', 'raceName')
+    raceData = firebase.getSubRecords('GameData', 'HeroStatData', 'RaceData', 'Race_Name')
+
     for raceStat in raceData:
-        races.append(raceStat.to_dict()['raceName'])
+        if raceStat.to_dict()['Race_Type'] == raceType:
+            races.append(raceStat.to_dict()['Race_Name'])
     Race = consoleFunctions.selectListValue(races)
 
     # Select a Class
-    print(f"{Fore.YELLOW}Choose a Class{Style.RESET_ALL}")
+    print(f"\n{Fore.YELLOW}Choose a Class{Style.RESET_ALL}\n")
     classes = []
-    classData = firebase.getSubRecords('gameData', 'heroStatData', 'classData', 'className')
+    classData = firebase.getSubRecords('GameData', 'HeroStatData', 'ClassData', 'Class_Skill')
     for classStat in classData:
-        classes.append(classStat.to_dict()['className'])
+        classes.append(classStat.id)
     Class = consoleFunctions.selectListValue(classes)
 
+    xClass = firebase.getSubRecord('GameData', 'HeroStatData', 'ClassData', Class)
+    Class_Name = xClass.to_dict()['Class_Name']
+    Class_Skill = xClass.to_dict()['Class_Skill']
+
     # Select a Role
-    print(f"{Fore.YELLOW}Choose a Role{Style.RESET_ALL}")
+    print(f"\n{Fore.YELLOW}Choose a Role{Style.RESET_ALL}\n")
     roles = []
-    roleData = firebase.getSubRecords('gameData','heroStatData', 'roleData', 'roleName')
+    roleData = firebase.getSubRecords('GameData', 'HeroStatData', 'RoleData', 'Role_Name')
     for roleStat in roleData:
-        roles.append(roleStat.to_dict()['roleName'])
+        roles.append(roleStat.id)
     Role = consoleFunctions.selectListValue(roles)
 
-    heroID = createNewHero(Name, Race, Class, Role)
-    print(f"{Fore.YELLOW}Success:{Style.RESET_ALL} A new hero has been created. \n ID: {Fore.GREEN}{heroID}{Style.RESET_ALL}\n {Fore.BLUE}{Name, Race, Class, Role}{Style.RESET_ALL}")
+    print(f"\n{Fore.YELLOW}Add New Hero{Style.RESET_ALL}\n")
+    print(f"Name: {Fore.BLUE}{Name}{Style.RESET_ALL}  Title: {Fore.BLUE}{Title}{Style.RESET_ALL}")
+    print(f"Race: {Fore.BLUE}{Race}{Style.RESET_ALL}  Role: {Fore.BLUE}{Role}{Style.RESET_ALL}")
+    print(f"Class: {Fore.BLUE}{Class_Name}{Style.RESET_ALL}  Skill: {Fore.BLUE}{Class_Skill}{Style.RESET_ALL}")
+    print(f"Description: {Fore.BLUE}{Description}{Style.RESET_ALL}\n")
+    confirm = consoleFunctions.selectListValue(['Confirm', 'Decline'])
+    
+    if confirm == 'Decline':
+        createNewHeroesFromInput()
 
+    heroID = createNewHero(Name, Race, Class, Role, Class_Name, Class_Skill, Title, Description)
+    print(f"\n{Fore.YELLOW}Success:{Style.RESET_ALL} A new hero has been created. \n \nID: {Fore.GREEN}{heroID}{Style.RESET_ALL}")
+    print(f"\nName: {Fore.BLUE}{Name}{Style.RESET_ALL} Race: {Fore.BLUE}{Race}{Style.RESET_ALL} Class: {Fore.BLUE}{Class}{Style.RESET_ALL} Role: {Fore.BLUE}{Role}{Style.RESET_ALL}")
+    print(f"\n{Fore.YELLOW}Setting Hero Stats{Style.RESET_ALL}\n")
+    
     results = setHeroBasicStats(heroID)
     json_heroData = json.dumps(results, indent=2)
     print(f"{Fore.YELLOW}Success:{Style.RESET_ALL} Hero stats have been updated \n {json_heroData}")
@@ -226,28 +246,38 @@ def createNewHeroesFromInput():
         "Class": Class,
         "Role": Role
         }
-        jsonFunctions.updateJsonFile('files/json/heroes,json', newHero)
+        jsonFunctions.updateJsonFile('files/json/HERO_heroes.json', newHero)
 
 # Create New Heroes from JSON file
 def createNewHeroesFromFile(fileType):
     if fileType == 'CSV':
-        heroes = jsonFunctions.createJsonFromCsv('files/csv/heroes.csv', 'files/json/heroes,json')
+        heroes = jsonFunctions.createJsonFromCsv('files/csv/HERO_heroes.csv', 'files/json/HERO_heroes.json')
     if fileType == 'JSON':
-        with open('files/json/heroes,json', 'r') as file:
+        with open('files/json/HERO_heroes.json', 'r') as file:
             # Load the existing JSON content
             heroes = json.load(file)
-            print(f"{Fore.YELLOW}Success: {Fore.GREEN}{'files/json/heroes,json'}{Style.RESET_ALL} has been loaded.")
+            print(f"{Fore.YELLOW}Success: {Fore.GREEN}files/json/HERO_heroes.json{Style.RESET_ALL} has been loaded.")
     
     heroCount = len(heroes)
-    print(f"{heroCount} heroes in file.")
+    print(f"\n{heroCount} heroes in file.\n")
 
     for hero in heroes:
         Name = hero['Name']
         Race = hero['Race']
         Class = hero['Class']
         Role = hero['Role']
+        Title = hero['Title']
+        Description = hero['Description']
+
+        splitClass = Class.split()
+        Class_Name = splitClass[1]
+        Class_Skill = splitClass[0]
+        if len(splitClass) > 2:
+            Class_Name = splitClass[1] + ' ' + splitClass[0-1]
+
         print(f"{Fore.YELLOW}Success:{Style.RESET_ALL} New hero created {Fore.GREEN}{Name, Race, Class, Role}{Style.RESET_ALL}") 
-        heroID = createNewHero(Name, Race, Class, Role)
+        heroID = createNewHero(Name, Race, Class, Role, Class_Name, Class_Skill, Title, Description)
+
         print(f"{Fore.YELLOW}Success:{Style.RESET_ALL} New hero added to Firebase. ID: {Fore.GREEN}{heroID}{Style.RESET_ALL}") 
         results = setHeroBasicStats(heroID)
         json_heroData = json.dumps(results, indent=2)

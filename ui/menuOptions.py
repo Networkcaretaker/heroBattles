@@ -17,8 +17,12 @@ def Main_Menu():
         'Update Race Data',
         'Update Class Data',
         'Update Role Data',
-        'Update Character Data',
+        'Update Hero Data',
         'Go Back'
+    ]
+    validFileType = [
+        'CSV',
+        'JSON'
     ]
 
     print(f"\n{Fore.YELLOW}WELCOME TO HERO BATTLES{Style.RESET_ALL}\n")
@@ -28,15 +32,19 @@ def Main_Menu():
 
         if selectFunction == 'Start Battle':
             battleFunctions.startBattle()
+            selectFunction = consoleFunctions.selectListValue(mainMenu)
 
         if selectFunction == 'View Heroes':
             print(f'\n{Fore.YELLOW}View Heroes{Style.RESET_ALL}\n')
+            selectFunction = consoleFunctions.selectListValue(mainMenu)
 
         if selectFunction == 'Create Hero':
             heroFunctions.createNewHeroesFromInput()
+            selectFunction = consoleFunctions.selectListValue(mainMenu)
 
         if selectFunction == 'Player Info':
             print(f'\n{Fore.YELLOW}Player Info{Style.RESET_ALL}\n')
+            selectFunction = consoleFunctions.selectListValue(mainMenu)
 
         if selectFunction == 'System Options':
             print(f'\n{Fore.YELLOW}System Options{Style.RESET_ALL}\n')
@@ -57,9 +65,20 @@ def Main_Menu():
                 backendFunctions.uploadHeroRoleFromCsvToFirebase()
                 selectFunction = consoleFunctions.selectListValue(systemOptions)
 
-            if selectFunction == 'Update Character Data':
-                print(f'\n{Fore.YELLOW}Update Character Data{Style.RESET_ALL}\n')
-                # backendFunctions.uploadHeroesFromCsvToFirebase()
+            if selectFunction == 'Update Hero Data':
+                print(f'\n{Fore.YELLOW}Update Hero Data{Style.RESET_ALL}\n')
+                selectFileType = input("Select File Type (CSV or JSON): ")
+                while selectFileType not in validFileType:
+                    print(f'{Fore.RED}Error:{Style.RESET_ALL} Select a valid file type.')
+                    selectFileType = input("Select File Type (CSV or JSON): ")
+                if selectFileType == 'CSV':
+                    print(f'{Fore.RED}Warning:{Style.RESET_ALL} This function will overwrite the saved JSON file \n Do you want to continue? (Type NO to cancel)')
+                    warningCheck = input("Continue: ")
+                    if warningCheck == 'NO':
+                        print(f"\{Fore.GREEN}Update Hero Data{Style.RESET_ALL} cancelled\n")
+                        selectFunction = consoleFunctions.selectListValue(systemOptions)
+
+                heroFunctions.createNewHeroesFromFile(selectFileType)
                 selectFunction = consoleFunctions.selectListValue(systemOptions)
 
             if selectFunction == 'Go Back':

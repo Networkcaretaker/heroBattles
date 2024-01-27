@@ -1,0 +1,62 @@
+[
+  {
+    "Name": "Balroc",
+    "Title": "The Feral Warbeast",
+    "Description": "Balroc, a mighty orc, embraces the role of a strength-based tank, his imposing presence and raw power making him the frontline bulwark in battles.",
+    "Race": "Grommash",
+    "Class": "Strength Tank",
+    "Role": "Brawler"
+  },
+  {
+    "Name": "Bane",
+    "Title": "The Chaotic Blademaster",
+    "Description": "Bane, a demon of formidable might, wields the dual essence of agility and magic as an unparalleled Brawler. With an infernal prowess, he thrives on the chaotic fusion of martial skills and arcane mastery, striking fear into the hearts of his foes.",
+    "Race": "Shadow",
+    "Class": "Agility Mage Warrior",
+    "Role": "Brawler"
+  },
+  {
+    "Name": "Xylla",
+    "Title": "The Arcane Strategist",
+    "Description": "A strategic sorceress, Xylla commands the arcane with grace. Her keen intellect and mastery of control magic make her a formidable leader on the battlefield.",
+    "Race": "Zephyrian",
+    "Class": "Sorcery Control Mage",
+    "Role": "Commander"
+  },
+  {
+    "Name": "Thorn",
+    "Title": "The Granite Guardian",
+    "Description": "Thorn, a dwarf of indomitable strength, combines agility and tanking prowess. His unyielding resilience and skilled combat techniques make him a stalwart force on the front lines.",
+    "Race": "Doomhammer",
+    "Class": "Agility Tank",
+    "Role": "Brawler"
+  },
+  {
+    "Name": "Jeffray",
+    "Title": "Binary Support Specialist",
+    "Description": "A sentient machine designed for support, Jeffray excels at intelligence-based tactics. His precision and technological prowess make him an invaluable asset from a distance.",
+    "Race": "Mechanixian",
+    "Class": "Intelligence Support",
+    "Role": "Marksman"
+  },
+  {
+    "Name": "Ence",
+    "Title": "The Agile Sniper",
+    "Description": "Ence, a swift and agile warrior, excels in marksmanship. His precision with ranged weapons and agility in combat make him a deadly force from a distance.",
+    "Race": "Luminaire",
+    "Class": "Agility Warrior",
+    "Role": "Marksman"
+  },
+  {
+    "Name": "Kjhs",
+    "Race": "Twilight Shadows",
+    "Class": "Strength Warrior",
+    "Role": "Brawler"
+  },
+  {
+    "Name": "jhgsa",
+    "Race": "Nocturne",
+    "Class": "Strength Tank Mage",
+    "Role": "Brawler"
+  }
+]

@@ -28,8 +28,11 @@ def getSubRecord(dataset, record, datasetB, recordID):
 
 # Get all sub-record records from database collection
 def getSubRecords(dataset, record, datasetB, order):
-    data = db.collection(dataset).document(record).collection(datasetB).order_by(order).stream()
+    data = db.collection(dataset).document(record).collection(datasetB).order_by(order)
+    data = data.stream()
     return (data)
+#     raceData = firebase.getSubRecords('GameData', 'HeroStatData', 'RaceData', 'Race Name')
+
 
 # Add a record
 def addRecord(dataset, data):

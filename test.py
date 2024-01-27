@@ -124,7 +124,7 @@ if selectFunction == 'addPlayerXP':
     playerFunctions.addPlayerXP(add_xp, playerData)
 
 # print(results)
-print(f"{Fore.YELLOW}Success: {Fore.GREEN}{selectFunction}{Style.RESET_ALL} function complete.")
+print(f"{Fore.YELLOW}Success: {Fore.GREEN}{selectFunction}{Style.RESET_ALL} function complete.\n")
 
 # DEV FUNCTIONS
 # test = firebase.getRecord(dataset, recordID)
