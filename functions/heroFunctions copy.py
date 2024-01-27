@@ -231,7 +231,7 @@ def createNewHeroesFromInput():
 # Create New Heroes from JSON file
 def createNewHeroesFromFile(fileType):
     if fileType == 'CSV':
-        heroes = jsonFunctions.createJsonFromCsv('files/csv/heroes.csv', 'files/json/heroes,json')
+        heroes = jsonFunctions.createJsonFromCsv('files/csv/heroes.csv', 'files/json/heroes.json')
     if fileType == 'JSON':
         with open('files/json/heroes,json', 'r') as file:
             # Load the existing JSON content

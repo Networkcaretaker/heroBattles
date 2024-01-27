@@ -42,7 +42,8 @@ def uploadHeroRaceFromCsvToFirebase():
         heroRaces.append(heroRaceData)
 
     results = jsonFunctions.jsonToFirebaseSubWithID ('GameData', 'HeroStatData', dataset, heroRaces)
-    print(f"{results}\n{Fore.YELLOW}Success: {Fore.GREEN}Race Data{Style.RESET_ALL} has been added to Firebase.")
+    print(f"\n{Fore.YELLOW}Success: {Fore.GREEN}Race Data{Style.RESET_ALL} has been added to Firebase.\n")
+
 
 # Upload Class Data to Firebase
 def uploadHeroClassFromCsvToFirebase():
@@ -72,7 +73,7 @@ def uploadHeroClassFromCsvToFirebase():
         heroClasses.append(heroClassData)
 
     results = jsonFunctions.jsonToFirebaseSubWithID ('GameData', 'HeroStatData', dataset, heroClasses)
-    print(f"{results}\n{Fore.YELLOW}Success: {Fore.GREEN}Class Data{Style.RESET_ALL} has been added to Firebase.")
+    print(f"\n{Fore.YELLOW}Success: {Fore.GREEN}Class Data{Style.RESET_ALL} has been added to Firebase.\n")
 
 # Upload Role Data to Firebase
 def uploadHeroRoleFromCsvToFirebase():
@@ -102,4 +103,4 @@ def uploadHeroRoleFromCsvToFirebase():
         heroRoles.append(heroRoleData)
 
     results = jsonFunctions.jsonToFirebaseSubWithID ('GameData', 'HeroStatData', dataset, heroRoles)
-    print(f"{results}\n{Fore.YELLOW}Success: {Fore.GREEN}Role Data{Style.RESET_ALL} has been added to Firebase.")
+    print(f"\n{Fore.YELLOW}Success: {Fore.GREEN}Role Data{Style.RESET_ALL} has been added to Firebase.\n")
